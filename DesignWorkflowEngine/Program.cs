@@ -6,7 +6,15 @@ namespace DesignWorkflowEngine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var workflow = new WorkflowEngine();
+
+            workflow.RegisterActivityChannel(new VideoActivityChannel());
+            workflow.RegisterActivityChannel(new WebServiceActivityChannel());
+            workflow.RegisterActivityChannel(new EmailActivityChannel());
+            workflow.RegisterActivityChannel(new ChangeStatusOfVideoActivityChannel());
+            workflow.Run();
+
+            Console.ReadLine();
         }
     }
 }
